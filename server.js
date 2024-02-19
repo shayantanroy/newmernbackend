@@ -20,3 +20,7 @@ console.log(`server is working on PORT:${process.env.PORT}, IN ${process.env.NOD
 
 
 // MONGO_URI= mongodb://localhost:27017/BTechPizzaWala
+// MONGO_URI=mongodb+srv://shayantanroy1997:Abcd12345roy@cluster0.oc7fzbd.mongodb.net/btechpizzawala?retryWrites=true
+
+// "start": "SET NODE_ENV=production & node server.js",
+// "dev": "SET NODE_ENV=development & nodemon server.js"
