@@ -11,14 +11,15 @@ router.get("/googlelogin",passport.authenticate("google",
 ));
 // temoporary
 router.get("/login",
-// passport.authenticate("google"),
-// (req,res,next)=>{
-//     res.send("Logged in");
-// }
-passport.authenticate("google",
-{scope:["profile"],
-succesRedirect:process.env.FRONTENED_URL,}
-)
+passport.authenticate("google"),
+(req,res,next)=>{
+    res.send("Logged in");
+}
+// passport.authenticate("google",
+// {scope:["profile"],
+// succesRedirect:process.env.FRONTENED_URL,}
+// )
+
 )
 
 router.get("/me",isAuthenticated,myprofile);

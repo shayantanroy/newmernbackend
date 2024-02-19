@@ -41,7 +41,6 @@ app.use(urlencoded({
 app.use(passport.authenticate("session"));
 app.use(passport.initialize());
 app.use(passport.session());
-
 // app.enable("trust proxy"); important for deployment
 app.enable("trust proxy");
 
