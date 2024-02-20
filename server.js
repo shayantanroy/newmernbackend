@@ -15,9 +15,12 @@ app.get("/",(req,res,next)=>{
     res.send("<h1>working</h1>");
 })
 app.listen(process.env.PORT,()=>
-console.log(`server is working on PORT:${process.env.PORT}, IN ${process.env.NODE_ENV} MODE`)
+console.log(`server is working on PORT:${process.env.PORT}`)
 );
 
+
+
+// , IN ${process.env.NODE_ENV} MODE
 
 // MONGO_URI= mongodb://localhost:27017/BTechPizzaWala
 // MONGO_URI=mongodb+srv://shayantanroy1997:Abcd12345roy@cluster0.oc7fzbd.mongodb.net/btechpizzawala?retryWrites=true
