@@ -7,7 +7,7 @@ export const isAuthenticated=(req,res,next)=>{
         return next( new ErrorHandler("Not Logged In ",401) )
     }
     next();
-}
+};
 
 export const Authorisedadmin=(req,res,next)=>{
     if(req.user.role!=="admin"){
@@ -15,4 +15,4 @@ export const Authorisedadmin=(req,res,next)=>{
 
     }
     next();
-}
+};

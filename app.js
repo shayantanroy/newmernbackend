@@ -5,8 +5,9 @@ import session from "express-session";
 import passport from "passport";
 import cookieParser from "cookie-parser";
 import cors from"cors";
-// import { errorMiddleware } from "./middleware/errormiddleware.js";
+import { errorMiddleware } from "./middleware/errormiddleware.js";
 const app=express();
+export default app;
 
 
 dotenv.config({
@@ -15,38 +16,38 @@ dotenv.config({
 
 
 
-// for middleware middileware (express-session)
-
-app.use(session({
-    secret:process.env.SESSION_SECRET,
-    resave:false,
-    saveUninitialized:false,
-    cookies: {
-        // secure:true,
-        // httpOnly:true,
-        // sameSite:"none"
-        secure: process.env.NODE_ENV === "development" ? false : true,
-        httpOnly: process.env.NODE_ENV === "development" ? false : true,
-        sameSite: process.env.NODE_ENV === "development" ? false : "none",
-},
-     
-})
-);
 app.use(cookieParser());
 app.use(express.json());
+
+
+// for middleware middileware (express-session)
+
+app.use(
+    session({
+      secret: process.env.SESSION_SECRET,
+      resave: false,
+      saveUninitialized: false,
+
+    //     cookie: {
+    //     secure:true,
+    //     httpOnly: true,
+    //     sameSite: "none",
+    //   },
+  
+    //   cookie: {
+    //     secure: process.env.NODE_ENV === "development" ? false : true,
+    //     httpOnly: process.env.NODE_ENV === "development" ? false : true,
+    //     sameSite: process.env.NODE_ENV === "development" ? false : "none",
+    //   },
+    })
+  );
+// app.use(cookieParser());
+// app.use(express.json());
 
 app.use(urlencoded({
     extended:true,
 }))
 
-
-// after session create(^)
-
-app.use(passport.authenticate("session"));
-app.use(passport.initialize());
-app.use(passport.session());
-// app.enable("trust proxy"); important for deployment
-// app.enable("trust proxy");
 
 
 app.use(cors({
@@ -57,13 +58,25 @@ app.use(cors({
 }))
 
 
+// after session create(^)
+
+app.use(passport.authenticate("session"));
+app.use(passport.initialize());
+app.use(passport.session());
+// app.enable("trust proxy"); important for deployment
+// app.enable("trust proxy");
+app.set('trust proxy', 1)
+
+
+
+
+
 
 ConnectPassword();
 
 // import routes
 import userroute from "./Routes/Userroute.js";
 import Orderroute from "./Routes/orderroute.js";
-import { errorMiddleware } from "./middleware/errormiddleware.js";
 
 
 app.use("/api/v1",userroute);
@@ -75,4 +88,4 @@ app.use("/api/v1",Orderroute);
 // using error middleware
 app.use(errorMiddleware);
 
-export default app;
+// export default app;
