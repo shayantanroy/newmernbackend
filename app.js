@@ -2,6 +2,7 @@ import express, { urlencoded } from "express";
 import dotenv from "dotenv";
 import { ConnectPassword } from "./Controller/UserController.js"
 import session from "express-session";
+// import session from "cookie-session";
 import passport from "passport";
 import cookieParser from "cookie-parser";
 import cors from"cors";
@@ -16,8 +17,6 @@ dotenv.config({
 
 
 
-app.use(cookieParser());
-app.use(express.json());
 
 
 // for middleware middileware (express-session)
@@ -26,23 +25,19 @@ app.use(
     session({
       secret: process.env.SESSION_SECRET,
       resave: false,
-      saveUninitialized: false,
+      saveUninitialized: true,
 
-    //     cookie: {
-    //     secure:true,
-    //     httpOnly: true,
-    //     sameSite: "none",
-    //   },
   
-    //   cookie: {
-    //     secure: process.env.NODE_ENV === "development" ? false : true,
-    //     httpOnly: process.env.NODE_ENV === "development" ? false : true,
-    //     sameSite: process.env.NODE_ENV === "development" ? false : "none",
-    //   },
+  
+      cookie: {
+        secure: process.env.NODE_ENV === "development" ? false : true,
+        httpOnly: process.env.NODE_ENV === "development" ? false : true,
+        sameSite: process.env.NODE_ENV === "development" ? false : "none",
+      },
     })
   );
-// app.use(cookieParser());
-// app.use(express.json());
+app.use(cookieParser());
+app.use(express.json());
 
 app.use(urlencoded({
     extended:true,
@@ -64,8 +59,8 @@ app.use(passport.authenticate("session"));
 app.use(passport.initialize());
 app.use(passport.session());
 // app.enable("trust proxy"); important for deployment
-// app.enable("trust proxy");
-app.set('trust proxy', 1)
+
+app.enable("trust proxy");
 
 
 
