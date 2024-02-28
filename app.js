@@ -28,7 +28,7 @@ app.use(
       saveUninitialized:false,
 
   
-  
+  // its true when deployed 
       cookie: {
         secure: process.env.NODE_ENV === "development" ? false : true,
         httpOnly: process.env.NODE_ENV === "development" ? false : true,
@@ -44,7 +44,7 @@ app.use(urlencoded({
 }))
 
 
-
+// for deploying
 app.use(cors({
     // credentials must be be true other wise could not get cookie
     credentials:true,

@@ -9,12 +9,13 @@ const router=express.Router();
 router.get("/googlelogin",passport.authenticate("google",
 {scope:["profile"]},
 ));
-// temoporary
+
 router.get("/login",
 passport.authenticate("google",
-{scope:["profile"],
-succesRedirect:process.env.FRONTENED_URL,
-})
+{
+    // scope:["profile"],
+succesRedirect:process.env.FRONTENED_URL,}
+)
 
 );
 
