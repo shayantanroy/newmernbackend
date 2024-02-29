@@ -12,14 +12,14 @@ router.get("/googlelogin",passport.authenticate("google",
 
 router.get(
     "/login",
-    passport.authenticate("google", 
+    passport.authenticate("google"), 
     (req,res,next)=>{
       res.send("logged in");
     }
     // {
     //   successRedirect:process.env.FRONTEND_URL,
     // }
-    )
+    // )
   );
 
 router.get("/me",isAuthenticated,myprofile);
