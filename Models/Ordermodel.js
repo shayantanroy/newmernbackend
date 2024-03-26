@@ -31,7 +31,7 @@ const schema= new mongoose.Schema({
 
 
     orderItems:{
-        cheeseBurger: {
+      pannerPizza: {
             price: {
               type: Number,
               required: true,
@@ -42,7 +42,7 @@ const schema= new mongoose.Schema({
             },
           },
       
-          vegCheeseBurger: {
+          vegcheesepizaa: {
             price: {
               type: Number,
               required: true,
@@ -53,7 +53,7 @@ const schema= new mongoose.Schema({
             },
           },
       
-          burgerWithFries: {
+          chickencheesepizza: {
             price: {
               type: Number,
               required: true,
