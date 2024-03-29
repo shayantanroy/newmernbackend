@@ -1,11 +1,12 @@
 import app from "./app.js";
 import { connectDB } from "./config/database.js";
-import razorpay from "razorpay"
+// import razorpay from "razorpay"
+import Razorpay from "razorpay";
 
 
 connectDB();
 
-export const instance=new razorpay({
+export const instance=new Razorpay({
     key_id: process.env.RAZORPAY_API_KEY,
     key_secret: process.env.RAZORPAY_API_SECRET,
 });
