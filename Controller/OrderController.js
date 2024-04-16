@@ -160,8 +160,8 @@ export const getmyOrders=asyncError(async(req,res,next)=>{
 // admin orders
 export const adminorders=asyncError(async(req,res,next)=>{
   const orders=await Order.find().populate("user","name");
-  Object.keys(orders).reverse();
-  // await orders.save();
+  
+  
   res.status(200).json({
     success:true,
     orders,
