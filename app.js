@@ -27,7 +27,7 @@ app.use(
       resave: false,
       saveUninitialized:false,
       cookie: {
-        maxAge: 1 * 60 * 1000, // 5 minutes
+        expires: 15 * 60 * 1000, // 1 minutes
       },
 
   
